@@ -1,0 +1,29 @@
+type AppUser {
+	idAppUser: ID!,
+	email: String,
+	password: String,
+	userName: String,
+	photo: String,
+	rol: Int
+}
+
+ type Mutation {
+
+ 	InsertAppUser(email: String, password: String, userName:String , photo: String, img64: String): String
+ 	InsertAppUserWithOutImage( email: String, password: String, userName:String ) : String
+ 	InsertAdmin(email: String, password: String, userName:String, rol:Int) : String
+ 	UpdateAppUser(id:ID , email: String, password: String, userName:String, photo: String, img64: String): String
+ 	UpdateImgUser(id:ID , photo: String, img64: String): String
+ 	DeleteAppUser(id:ID) : String
+ 	}
+
+  type Query {
+
+   Users: [AppUser],
+   User(id: ID): AppUser,
+   UserByUserNameLike(userName: String): [AppUser]
+   ExistUserName(UserName: String): Boolean,
+   ExistEmail(Email: String): Boolean,
+   Login(email: String, originalPassword: String): AppUser
+
+}
